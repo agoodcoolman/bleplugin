@@ -1,0 +1,17 @@
+{
+  "name": "bleplugin",
+  "version": "1.0.0",
+  "description": "",
+  "cordova": {
+    "id": "com.bleplugin",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "jin",
+  "license": "BSD"
+}

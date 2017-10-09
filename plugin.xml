@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.bleplugin" version="1.0.0">
+  <name>bleplugin</name>
+  <js-module name="bleplugin" src="www/bleplugin.js">
+    <clobbers target="cordova.plugins.blueprint"/>
+  </js-module>
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="bleplugin">
+        <param name="android-package" value="com.bleplugin.BlePlug"/>
+      </feature>
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml"/>
+    <source-file src="src/android/BlePlug.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/BLEManager.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/DeviceInfo.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/DiscoveryService.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/OperationCmd.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/PopWindowForBLEList.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/AbstrPrint.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/RouterManager.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/ConnectService.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/LoadingDialog.java" target-dir="src/com/bleplugin"/>
+    <source-file src="src/android/FiJistuPrintManger.java" target-dir="src/com/bleplugin"/>
+    <config-file parent="/manifest/application" target="AndroidManifest.xml">
+      <activity android:clearTaskOnLaunch="true" android:configChanges="orientation|keyboardHidden|screenSize" android:exported="false" android:name="com.bleplugin.PopWindowForBLEList" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden"/>
+      <service android:label="Share" android:name="com.bleplugin.DiscoveryService"/>
+      <service android:label="Share" android:name="com.bleplugin.ConnectService"/>
+    </config-file>
+    <config-file parent="/manifest" target="AndroidManifest.xml">
+      <uses-permission android:name="android.permission.BLUETOOTH"/>
+      <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+      <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    </config-file>
+    <resource-file src="jar/zp_cpcl_new.jar" target="libs/zp_cpcl_new.jar"/>
+    <resource-file src="layout/popwindow_for_ble_list_item.xml" target="res/layout/popwindow_for_ble_list_item.xml"/>
+    <resource-file src="layout/popwindow_for_ble_list.xml" target="res/layout/popwindow_for_ble_list.xml"/>
+    <resource-file src="layout/dialog_loading.xml" target="res/layout/dialog_loading.xml"/>
+    <resource-file src="drawable/yuanjiao.xml" target="res/drawable/yuanjiao.xml"/>
+    <config-file parent="/resources" target="res/values/strings.xml">
+      <string name="ble_not_supported">当前设备不支持蓝牙</string>
+      <string name="devicename">设备名称</string>
+      <string name="deviceaddress">设备地址</string>
+    </config-file>
+    <config-file parent="/resources" target="res/values/themes.xml">
+      <style name="loadingDialogStyle" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+      </style>
+    </config-file>
+  </platform>
+  <platform name="ios">
+    <config-file parent="/*" target="config.xml">
+      <feature name="bleplugin">
+        <param name="ios-package" value="bleplugin"/>
+      </feature>
+    </config-file>
+    <source-file src="src/ios/bleplugin.m"/>
+    <source-file src="src/ios/BLEAdvertisementData.h"/>
+    <source-file src="src/ios/BLEService.h"/>
+    <source-file src="src/ios/BLEManager.h"/>
+    <source-file src="src/ios/BleTableViewController.h"/>
+    <source-file src="src/ios/BleTableViewController.m"/>
+    <source-file src="src/ios/BleTableViewController.xib"/>
+    <source-file src="src/ios/Printer.h"/>
+    <source-file src="src/ios/PrintService.h"/>
+    <source-file src="src/ios/PrintService.m"/>
+
+    <source-file src="src/ios/libbluetooth.a"/>
+    <source-file src="src/ios/libiBridgeLib.a"/>
+
+    <framework src="CoreBluetooth.framework"/>
+    <framework src="Foundation.framework"/>
+    <framework src="CoreGraphics.framework"/>
+    <framework src="UIKit.framework"/>
+    <framework src="libbluetooth.a"/>
+    <framework src="libiBridgeLib.a"/>
+  </platform>
+</plugin>
