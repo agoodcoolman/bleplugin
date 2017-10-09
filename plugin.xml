@@ -34,6 +34,8 @@
       <uses-permission android:name="android.permission.WAKE_LOCK"/>
     </config-file>
     <resource-file src="jar/zp_cpcl_new.jar" target="libs/zp_cpcl_new.jar"/>
+    <resource-file src="jar/BLE-SDK_V1.0.jar" target="libs/BLE-SDK_V1.0.jar"/>
+    <resource-file src="jar/iBridge.jar" target="libs/iBridge.jar"/>
     <resource-file src="layout/popwindow_for_ble_list_item.xml" target="res/layout/popwindow_for_ble_list_item.xml"/>
     <resource-file src="layout/popwindow_for_ble_list.xml" target="res/layout/popwindow_for_ble_list.xml"/>
     <resource-file src="layout/dialog_loading.xml" target="res/layout/dialog_loading.xml"/>
